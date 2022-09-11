@@ -1,4 +1,4 @@
-[YaMDb Status](https://github.com/Maliarda/yamdb_final/actions/workflows/yamdb_workflow.yaml/badge.svg)
+![Build Status](https://github.com/maliarda/yamdb_final/workflows/yamdb_workflow/badge.svg)](https://github.com/maliarda/yamdb_final/actions/workflows/yamdb_workflow.yml)
 # YaMDb API
 
 ## Описание
