@@ -1,5 +1,5 @@
 name: yamdb_workflow
-#1 бесит
+
 on: [push]
 
 jobs:

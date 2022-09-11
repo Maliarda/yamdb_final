@@ -1,4 +1,4 @@
-![Build Status](https://github.com/maliarda/yamdb_final/workflows/yamdb_workflow/badge.svg)](https://github.com/maliarda/yamdb_final/actions/workflows/yamdb_workflow.yml)
+![Build Status](https://github.com/maliarda/yamdb_final/workflows/yamdb_workflow/badge.svg)
 # YaMDb API
 
 ## Описание
@@ -25,10 +25,10 @@
 ### Клонировать репозиторий и перейти в нем в папку infra в командной строке:
 
 ```
-git clone https://github.com/Maliarda/infra_sp2.git
+git clone https://github.com/Maliarda/yamdb_final.git
 ```
 ```
-cd infra_sp2/infra
+cd yamdb_final/infra
 ```
 ### Создать .env файл в директории infra, в котором должны содержаться следующие переменные:
 > DB_ENGINE=django.db.backends.postgresql - указываем, что работаем с postgresql
