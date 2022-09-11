@@ -1,4 +1,4 @@
-https://github.com/Maliarda/yamdb_final/.github/workflows/yamdb_workflow.yml/badge.svg
+https://github.com/Maliarda/yamdb_final/workflows/yamdb_workflow.yml/badge.svg
 # YaMDb API
 
 ## Описание
