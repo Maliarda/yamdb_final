@@ -93,8 +93,8 @@ sudo docker exec -it a47ce31d4b7b bash
 ```
 Внутри контейнера выполнить миграции:
 ```
-python manage.py migrate -->
-```
+python manage.py migrate
+``` -->
 ## Примеры запросов:
 
 ### Запрос для просмотра категорий анонимным пользователем:
@@ -158,12 +158,12 @@ python manage.py migrate -->
 }   
 ```
 
-
 Полная документация доступна по адресу http://localhost/redoc/
+
 ## Участники:
 
 [Павел Бойков](https://github.com/pavelboykov). Управление пользователями (Auth и Users): система регистрации и аутентификации, права доступа, работа с токеном, система подтверждения e-mail, поля.
 
-[Мария Пирогова](https://github.com/Maliarda). Категории (Categories), жанры (Genres) и произведения (Titles): модели, view и эндпойнты. README проекта. Docker.
+[Мария Пирогова](https://github.com/Maliarda). Категории (Categories), жанры (Genres) и произведения (Titles): модели, view и эндпойнты.
 
 [Михаил Ромашов](https://github.com/Romashovm). Отзывы (Review) и комментарии (Comments): модели и view, эндпойнты. Рейтинги произведений.
