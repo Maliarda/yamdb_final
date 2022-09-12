@@ -133,12 +133,7 @@ sudo docker exec -it a47ce31d4b7b bash
 ```
 python manage.py migrate
 ```
-Также можно наполнить базу данных начальными тестовыми данными:
 ```
-python3 manage.py shell
->>> from django.contrib.contenttypes.models import ContentType
->>> ContentType.objects.all().delete()
->>> quit()
 python manage.py loaddata fixtures.json
 ```
 Теперь проекту доступна статика. 
