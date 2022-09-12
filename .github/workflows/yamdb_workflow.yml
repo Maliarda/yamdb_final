@@ -58,6 +58,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
+            sudo docker pull maliara/yamdb:latestп
             sudo docker compose stop
             sudo docker compose rm web
             touch .env
