@@ -133,15 +133,6 @@ sudo docker exec -it a47ce31d4b7b bash
 ```
 python manage.py migrate
 ```
-```
-python manage.py loaddata fixtures.json
-```
-Теперь проекту доступна статика. 
-
-Для создания нового суперпользователя:
-```
-$ python manage.py createsuperuser
-```
 ## Примеры запросов:
 
 ### Запрос для просмотра категорий анонимным пользователем:
