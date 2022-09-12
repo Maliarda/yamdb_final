@@ -17,61 +17,6 @@
 3. Пользователь отправляет POST-запрос с параметрами username и confirmation_code на эндпоинт /api/v1/auth/token/, в ответе на запрос ему приходит token (JWT-токен).
 4. При желании пользователь отправляет PATCH-запрос на эндпоинт /api/v1/users/me/ и заполняет поля в своём профайле (описание полей — в документации).
 
-## Как запустить проект:
-
- _Если у вас не установлены Docker и Docker-compose необходимо воспользоваться официальной [инструкцией](https://docs.docker.com/engine/install/)._
-
-### Клонировать репозиторий и перейти в нем в папку infra в командной строке:
-
-```
-git clone https://github.com/Maliarda/yamdb_final.git
-```
-```
-cd yamdb_final/infra
-```
-### Создать .env файл в директории infra, в котором должны содержаться следующие переменные:
-> DB_ENGINE=django.db.backends.postgresql - указываем, что работаем с postgresql
-
-> DB_NAME=postgres - имя базы данных
-
-> POSTGRES_USER=postgres - логин для подключения к базе данных
-
->POSTGRES_PASSWORD=postgres - пароль для подключения к БД (установите свой)
-
->DB_HOST=db - название сервиса (контейнера)
-
-> DB_PORT=5432 - порт для подключения к БД
-
-### Создать .env файл в директории api_yamdb для SECRET_KEY
-Для генерации нового значения можно использовать команду (из контейнера web, либо иного окружения с установленным python и Django)
-
-```
-python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
-```
-
-### Собрать образ при помощи docker-compose
-
-```
-docker-compose up -d --build
-```
-
-### Применить миграции:
-```
-docker-compose exec web python manage.py migrate
-```
-### Собрать статику:
-```
-docker-compose exec web python manage.py collectstatic --no-input
-```
-### Добавить данные в базу:
-```
-docker-compose run web python manage.py loaddata fixtures.json
-```
-### Создать суперпользователя:
-```
-docker-compose exec web python manage.py createsuperuser
-```
-
 ## Установка на удалённом сервере
 
 Необходимо добавить Action secrets в репозитории на GitHub в разделе settings -> Secrets:
@@ -94,8 +39,7 @@ git push
 При выполнении команды git push запустится набор блоков комманд jobs (см. файл yamdb_workflow.yaml).
 Последовательно будут выполнены следующие блоки:
 * tests - тестирование проекта на соответствие PEP8 и тестам pytest.
-* build_and_push_to_docker_hub - при успешном прохождении тестов собирается образ (image) для docker контейнера 
-и отправлятеся в DockerHub
+* build_and_push_to_docker_hub - при успешном прохождении тестов собирается образ (image) для docker контейнера и отправлятеся в DockerHub
 * deploy - после отправки образа на DockerHub начинается деплой проекта на сервере.
 Происходит копирование следующих файлов с репозитория на сервер:
   - docker-compose.yaml, необходимый для сборки трех контейнеров:
@@ -105,8 +49,7 @@ git push
   - nginx/default.conf - файл кофигурации nginx сервера
   - static - папка со статическими файлами проекта
   
-  После копировния происходит установка docker и docker-compose на сервере
-  и начинается сборка и запуск контейнеров.
+  После копировния происходит установка docker и docker-compose на сервере и начинается сборка и запуск контейнеров.
 * send_message - после сборки и запуска контейнеров происходит отправка сообщения в 
   телеграм об успешном окончании workflow
 
@@ -114,7 +57,26 @@ git push
 ```
 ssh username@server_address
 ```
-Отобразить список работающих контейнеров:
+
+### После успешного деплоя:
+Соберите статические файлы (статику):
+```
+docker-compose exec web python manage.py collectstatic --no-input
+```
+
+Примените миграции:
+```
+docker-compose exec web python manage.py makemigrations
+docker-compose exec web python manage.py migrate --noinput
+```
+Создайте суперпользователя:
+
+docker-compose exec web python manage.py createsuperuser
+
+или
+
+docker-compose exec web python manage.py loaddata fixtures.json
+<!-- Отобразить список работающих контейнеров:
 ```
 sudo docker container ls
 ```
@@ -131,7 +93,7 @@ sudo docker exec -it a47ce31d4b7b bash
 ```
 Внутри контейнера выполнить миграции:
 ```
-python manage.py migrate
+python manage.py migrate -->
 ```
 ## Примеры запросов:
 
