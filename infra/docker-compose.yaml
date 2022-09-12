@@ -1,11 +1,12 @@
 version: '3.3'
-#kak ya zla
+
 services:
 
   db:
     image: postgres:13.0-alpine
+    restart: always
     volumes:
-      - /var/lib/postgresql/data/
+      - db_value:/var/lib/postgresql/data/
     env_file:
       - ./.env
 
@@ -22,6 +23,7 @@ services:
 
   nginx:
     image: nginx:1.21.3-alpine
+    restart: always
     ports:
       - "80:80"
     volumes:
@@ -32,6 +34,6 @@ services:
       - web
 
 volumes:
-  db_value:
   static_value:
   media_value:
+  db_value:
