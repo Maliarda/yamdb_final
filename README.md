@@ -79,7 +79,6 @@ docker-compose exec web python manage.py loaddata fixtures.json
 ```
 docker-compose exec web python manage.py createsuperuser
 ```
-Отчаяние
 ## Примеры запросов:
 
 ### Запрос для просмотра категорий анонимным пользователем:
