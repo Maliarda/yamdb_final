@@ -75,7 +75,7 @@ docker-compose exec web python manage.py migrate --noinput
 docker-compose exec web python manage.py loaddata fixtures.json
 ```
 
-Создайте суперпользователя:
+Создайте суперпользователя, если необходимо:
 ```
 docker-compose exec web python manage.py createsuperuser
 ```
