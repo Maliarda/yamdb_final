@@ -1,5 +1,6 @@
 ![Build Status](https://github.com/maliarda/yamdb_final/workflows/yamdb_workflow/badge.svg)
 # YaMDb API
+доступен по ссылке - http://158.160.1.142/api/v1/
 ## Описание
 
 Проект **YaMDb** собирает отзывы (Review) пользователей на произведения (Titles). Произведения делятся на категории: «Книги», «Фильмы», «Музыка». Список категорий (Category) может быть расширен администратором (например, можно добавить категорию «Изобразительное искусство» или «Ювелирка»).
@@ -69,13 +70,17 @@ docker-compose exec web python manage.py collectstatic --no-input
 docker-compose exec web python manage.py makemigrations
 docker-compose exec web python manage.py migrate --noinput
 ```
-Создайте суперпользователя:
-
-docker-compose exec web python manage.py createsuperuser
-
-или
-
+Заполните базу тестовыми данными:
+```
 docker-compose exec web python manage.py loaddata fixtures.json
+```
+
+Создайте суперпользователя:
+```
+docker-compose exec web python manage.py createsuperuser
+```
+
+
 <!-- Отобразить список работающих контейнеров:
 ```
 sudo docker container ls
