@@ -79,27 +79,6 @@ docker-compose exec web python manage.py loaddata fixtures.json
 ```
 docker-compose exec web python manage.py createsuperuser
 ```
-
-
-<!-- Отобразить список работающих контейнеров:
-```
-sudo docker container ls
-```
-В списке контейнеров копировать CONTAINER ID контейнера username/yamdb_final_web:latest (username - имя пользователя на DockerHub):
-```
-CONTAINER ID   IMAGE                            COMMAND                  CREATED          STATUS          PORTS                NAMES
-0361a982109d   nginx:1.19.6                     "/docker-entrypoint.…"   50 minutes ago   Up 50 minutes   0.0.0.0:80->80/tcp   yamdb_final_nginx_1
-a47ce31d4b7b   username/yamdb_final_web:latest  "/bin/sh -c 'gunicor…"   50 minutes ago   Up 50 minutes                        yamdb_final_web_1
-aed19f6751f3   postgres:13.1                    "docker-entrypoint.s…"   50 minutes ago   Up 50 minutes   5432/tcp             yamdb_final_postgres_1
-```
-Выполнить вход в контейнер:
-```
-sudo docker exec -it a47ce31d4b7b bash
-```
-Внутри контейнера выполнить миграции:
-```
-python manage.py migrate
-``` -->
 ## Примеры запросов:
 
 ### Запрос для просмотра категорий анонимным пользователем:
